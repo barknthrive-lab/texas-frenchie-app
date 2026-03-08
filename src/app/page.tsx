@@ -103,32 +103,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Affiliate Storefront CTA */}
-        <div className="mb-16">
-          <Link
-            href="/shop"
-            className="block w-full bg-[#0A0A0A] border border-[var(--border)] rounded-2xl p-8 md:p-12 relative overflow-hidden group transition-colors hover:border-[#E8500A]/40"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[rgba(232,80,10,0.1)] rounded-full blur-[100px] pointer-events-none transition-opacity opacity-50 group-hover:opacity-100" />
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div>
-                <div className="inline-block font-mono text-[10px] tracking-[5px] uppercase text-[var(--color-tx-burnt)] border border-[rgba(232,80,10,0.4)] px-3.5 py-1.5 rounded-full mb-4">
-                  Curated Equipment
-                </div>
-                <h2 className="font-heading text-4xl md:text-5xl tracking-widest text-[#F0E6D3] mb-2">
-                  The Storefront
-                </h2>
-                <p className="text-[15px] font-light text-[var(--dim)] max-w-lg">
-                  Shop our curated list of the absolute best cooling vests, heavy-duty harnesses, and safety gear designed exclusively for French Bulldogs.
-                </p>
-              </div>
-              <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-full border border-zinc-700 bg-zinc-900 group-hover:bg-[#E8500A] group-hover:border-[#E8500A] transition-colors text-white">
-                →
-              </div>
-            </div>
-          </Link>
-        </div>
-
+        {/* Affiliate Storefront CTA - Hidden until 2,000 subscriber milestone */}
+        
         {/* Newsletter */}
         <NewsletterForm />
 
