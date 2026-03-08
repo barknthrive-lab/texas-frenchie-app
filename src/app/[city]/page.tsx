@@ -94,7 +94,7 @@ export default async function CityHub({
     notFound();
   }
 
-  const [{ data: vets }, { data: apts }, { data: patios }, { data: breeders }, { data: parks }] = await Promise.all([
+  const [{ data: vets }, { data: apts }, { data: patios }, { data: breeders }, { data: parks }, { data: trainers }] = await Promise.all([
     supabase
       .from("directory_listings")
       .select("*")
@@ -120,6 +120,11 @@ export default async function CityHub({
       .select("*")
       .eq("city", cityName)
       .eq("category", "Park"),
+    supabase
+      .from("directory_listings")
+      .select("*")
+      .eq("city", cityName)
+      .eq("category", "Trainer"),
   ]);
 
   // Gear is statewide, not city-specific
@@ -156,7 +161,8 @@ export default async function CityHub({
             ...(apts || []), 
             ...(patios || []), 
             ...(breeders || []), 
-            ...(parks || [])
+            ...(parks || []),
+            ...(trainers || [])
           ]} 
         />
       </div>
@@ -230,6 +236,24 @@ export default async function CityHub({
               parks.map((p) => <ListingCard key={p.id} listing={p} />)
             ) : (
               <EmptyState label="indoor dog parks" />
+            )}
+          </div>
+        </div>
+
+        {/* Trainers */}
+        <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[rgba(239,83,80,0.15)] rounded-full blur-[100px] pointer-events-none" />
+          <h2 className="font-heading text-4xl tracking-wide text-[#F0E6D3] mb-2">
+            🐍 Safety & Avoidance Trainers
+          </h2>
+          <p className="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-8">
+            {trainers && trainers.length > 0 ? `${trainers.length} listing${trainers.length > 1 ? "s" : ""}` : "No listings yet"}
+          </p>
+          <div className="space-y-4">
+            {trainers && trainers.length > 0 ? (
+              trainers.map((t) => <ListingCard key={t.id} listing={t} />)
+            ) : (
+              <EmptyState label="trainers" />
             )}
           </div>
         </div>

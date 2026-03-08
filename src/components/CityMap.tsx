@@ -38,7 +38,7 @@ const goldIcon = new L.Icon({
 });
 
 function getIconForCategory(category: string) {
-  if (category === "Vet") return redIcon;
+  if (category === "Vet" || category === "Trainer") return redIcon;
   if (category === "Park" || category === "Patio") return greenIcon;
   if (category === "Breeder") return goldIcon;
   return customIcon;
@@ -158,7 +158,7 @@ export default function CityMap({
       <div className="absolute bottom-4 left-4 z-[400] bg-zinc-950/90 border border-zinc-800 p-3 rounded-lg backdrop-blur-md">
         <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-2">Map Legend</div>
         <div className="flex flex-col gap-1.5 text-xs text-zinc-300">
-          <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-red-500"></span> Veterinarians</div>
+          <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-red-500"></span> Vets & Safety Trainers</div>
           <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-green-500"></span> Parks & Patios</div>
           <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-amber-500"></span> Verified Breeders</div>
         </div>
