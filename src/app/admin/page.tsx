@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabaseClient";
 import type { DirectoryListing } from "@/types/database";
 
-type Tab = "research" | "vault" | "auditor";
+type Tab = "research" | "marketing" | "auditor";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>("research");
@@ -78,7 +78,7 @@ export default function AdminDashboard() {
       <nav className="flex items-center space-x-2 border-b border-zinc-800 pb-2 overflow-x-auto scroller-hidden">
         {[
           { id: "research", label: "RESEARCH HUB" },
-          { id: "vault", label: "VIDEO VAULT" },
+          { id: "marketing", label: "SOCIAL MEDIA MARKETING MART" },
           { id: "auditor", label: "AD AUDITOR" },
         ].map((tab) => (
           <button
@@ -164,33 +164,57 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* VIDEO VAULT */}
-        {activeTab === "vault" && (
+        {/* SOCIAL MEDIA MARKETING MART */}
+        {activeTab === "marketing" && (
           <div className="space-y-6">
-            <h2 className="font-heading text-3xl tracking-wide text-[#F0E6D3]">Video Ad Vault</h2>
+            <div className="flex justify-between items-center">
+              <h2 className="font-heading text-3xl tracking-wide text-[#F0E6D3]">Social Media Marketing Mart</h2>
+              <div className="text-xs font-mono text-emerald-500 uppercase tracking-widest border border-emerald-900/50 px-3 py-1 rounded bg-emerald-950/30">
+                AI SCRIPTS READY
+              </div>
+            </div>
             <p className="text-sm text-zinc-400">
-              Review AI-generated variants (Kling 3.0 + CapCut) prior to launching campaigns.
+              Copy and paste these exact text-to-video prompts into Kling 3.0, then use the scripts below for your CapCut/Meta Ads voiceovers.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-              {[
-                { name: "Variant 1: The Gold Standard", status: "PENDING GENERATION", ratio: "4:5" },
-                { name: "Variant 2: The Texas Local", status: "PENDING GENERATION", ratio: "9:16" },
-                { name: "Variant 3: The Home Rule", status: "PENDING GENERATION", ratio: "4:5" },
-              ].map((vid) => (
-                <div key={vid.name} className="border border-dashed border-zinc-700 rounded-xl p-6 flex flex-col items-center justify-center text-center aspect-[4/5] bg-zinc-900/20">
-                  <div className="w-12 h-12 rounded-full border border-zinc-700 mb-4 flex items-center justify-center text-zinc-600">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                  </div>
-                  <h3 className="font-heading tracking-wider text-[#F0E6D3] mb-1">{vid.name}</h3>
-                  <p className="text-[10px] font-mono tracking-widest uppercase text-zinc-500 mb-4">
-                    Ratio: {vid.ratio}
-                  </p>
-                  <span className="text-[9px] font-mono tracking-[3px] py-1.5 px-3 rounded-full bg-zinc-800 text-amber-500 border border-amber-500/20">
-                    {vid.status}
-                  </span>
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 pt-4">
+              
+              {/* Ad 1 */}
+              <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-6 flex flex-col">
+                <h3 className="font-heading text-xl text-[#E8500A] mb-2">Ad 1: The Gold Standard</h3>
+                <p className="text-[10px] font-mono text-zinc-500 mb-4 tracking-widest uppercase">Ratio: 9:16 | Hook: Breeder Scams</p>
+                <div className="bg-zinc-900 p-4 rounded border border-zinc-800 mb-4 flex-grow">
+                  <h4 className="text-xs font-bold text-white mb-2">KLING 3.0 PROMPT:</h4>
+                  <p className="text-xs text-zinc-400 mb-4 italic">&quot;Photorealistic, cinematic vertical video. Close up of a very sad, sick French Bulldog puppy. Suddenly transitions to a healthy, muscular Frenchie running happily. Cinematic lighting.&quot;</p>
+                  <h4 className="text-xs font-bold text-white mb-2">CAPCUT VOICEOVER:</h4>
+                  <p className="text-sm text-zinc-300">&quot;Texas Frenchie owners are losing thousands of dollars to backyard breeders. Before you buy your next puppy, you need to check the local Verified List. We compiled the only directory of AKC Gold Standard Breeders in Texas. Click here to search for free.&quot;</p>
                 </div>
-              ))}
+              </div>
+
+              {/* Ad 2 */}
+              <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-6 flex flex-col">
+                <h3 className="font-heading text-xl text-[#66BB6A] mb-2">Ad 2: The Texas Local</h3>
+                <p className="text-[10px] font-mono text-zinc-500 mb-4 tracking-widest uppercase">Ratio: 9:16 | Hook: Heat Trapped</p>
+                <div className="bg-zinc-900 p-4 rounded border border-zinc-800 mb-4 flex-grow">
+                  <h4 className="text-xs font-bold text-white mb-2">KLING 3.0 PROMPT:</h4>
+                  <p className="text-xs text-zinc-400 mb-4 italic">&quot;Photorealistic vertical video of a French Bulldog panting heavily on a hot Texas sidewalk, looking depressed. Transitions to the dog happily walking inside a massive, air-conditioned Home Depot.&quot;</p>
+                  <h4 className="text-xs font-bold text-white mb-2">CAPCUT VOICEOVER:</h4>
+                  <p className="text-sm text-zinc-300">&quot;Is your Frenchie trapped inside for the next 4 months because of the heat? Throwing ice water on them can trigger fatal shock. Instead, download our free Texas Summer Survival Guide. We mapped out every indoor A/C dog park in the state. Click to download.&quot;</p>
+                </div>
+              </div>
+
+              {/* Ad 3 */}
+              <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-6 flex flex-col">
+                <h3 className="font-heading text-xl text-[#4FC3F7] mb-2">Ad 3: The Home Rule</h3>
+                <p className="text-[10px] font-mono text-zinc-500 mb-4 tracking-widest uppercase">Ratio: 4:5 | Hook: Breed Bans</p>
+                <div className="bg-zinc-900 p-4 rounded border border-zinc-800 mb-4 flex-grow">
+                  <h4 className="text-xs font-bold text-white mb-2">KLING 3.0 PROMPT:</h4>
+                  <p className="text-xs text-zinc-400 mb-4 italic">&quot;Wide angle, photorealistic video of a luxury high-rise apartment living room with floor-to-ceiling windows. A French Bulldog is sleeping peacefully on a velvet couch.&quot;</p>
+                  <h4 className="text-xs font-bold text-white mb-2">CAPCUT VOICEOVER:</h4>
+                  <p className="text-sm text-zinc-300">&quot;Did you know 60% of luxury apartments in Texas secretly ban French Bulldogs because of weight or breed restrictions? We just unlocked the local directory of every luxury apartment in Austin, Dallas, and Houston that actually welcomes Frenchies. Click to browse for free.&quot;</p>
+                </div>
+              </div>
+
             </div>
           </div>
         )}
