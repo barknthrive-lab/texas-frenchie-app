@@ -7,7 +7,7 @@ export type City = "Austin" | "Dallas" | "Houston" | "San Antonio";
 export interface DirectoryListing {
   id: string;
   city: City;
-  category: "Vet" | "Apartment" | "Service" | "Groomer" | "Patio" | "Gear" | "Breeder";
+  category: "Vet" | "Apartment" | "Service" | "Groomer" | "Patio" | "Gear" | "Breeder" | "Park";
   name: string;
   address: string;
   phone?: string;

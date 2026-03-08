@@ -93,7 +93,7 @@ export default async function CityHub({
     notFound();
   }
 
-  const [{ data: vets }, { data: apts }, { data: patios }, { data: breeders }] = await Promise.all([
+  const [{ data: vets }, { data: apts }, { data: patios }, { data: breeders }, { data: parks }] = await Promise.all([
     supabase
       .from("directory_listings")
       .select("*")
@@ -114,6 +114,11 @@ export default async function CityHub({
       .select("*")
       .eq("city", cityName)
       .eq("category", "Breeder"),
+    supabase
+      .from("directory_listings")
+      .select("*")
+      .eq("city", cityName)
+      .eq("category", "Park"),
   ]);
 
   // Gear is statewide, not city-specific
@@ -193,6 +198,24 @@ export default async function CityHub({
               patios.map((p) => <ListingCard key={p.id} listing={p} />)
             ) : (
               <EmptyState label="dog-friendly patios" />
+            )}
+          </div>
+        </div>
+
+        {/* Parks */}
+        <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[rgba(102,187,106,0.15)] rounded-full blur-[100px] pointer-events-none" />
+          <h2 className="font-heading text-4xl tracking-wide text-[#F0E6D3] mb-2">
+            🌳 Indoor Dog Parks
+          </h2>
+          <p className="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-8">
+            {parks && parks.length > 0 ? `${parks.length} listing${parks.length > 1 ? "s" : ""}` : "No listings yet"}
+          </p>
+          <div className="space-y-4">
+            {parks && parks.length > 0 ? (
+              parks.map((p) => <ListingCard key={p.id} listing={p} />)
+            ) : (
+              <EmptyState label="indoor dog parks" />
             )}
           </div>
         </div>
