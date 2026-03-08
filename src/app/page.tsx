@@ -53,6 +53,56 @@ export default function Home() {
           ))}
         </div>
 
+        {/* Summer Survival Quick-Guide / Indoor Escapes */}
+        <div className="mb-16 bg-[#0a0a0a] border border-[var(--border)] rounded-3xl p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[rgba(102,187,106,0.08)] rounded-full blur-[120px] pointer-events-none" />
+          <div className="relative z-10 flex flex-col md:flex-row gap-12">
+            <div className="md:w-1/3">
+              <div className="inline-block font-mono text-[10px] tracking-[5px] uppercase text-[#66BB6A] border border-[rgba(102,187,106,0.4)] bg-[#66BB6A]/10 px-3.5 py-1.5 rounded-full mb-4">
+                Beat the Texas Oven
+              </div>
+              <h2 className="font-heading text-4xl md:text-5xl tracking-widest text-[#F0E6D3] mb-4">
+                A/C <span className="text-[#66BB6A]">Havens</span>
+              </h2>
+              <p className="text-[15px] font-light text-[var(--dim)] leading-relaxed mb-6">
+                Don&apos;t let the 100°F summer trap your Frenchie inside. Brachycephalic breeds overheat fast, but these highly-rated Texas chains are generally 100% dog-friendly and blasted with cold A/C.
+              </p>
+              <div className="p-4 rounded-xl bg-[rgba(239,83,80,0.1)] border border-[rgba(239,83,80,0.2)]">
+                <p className="text-xs text-[rgba(239,83,80,0.9)] font-mono uppercase tracking-widest mb-1.5 flex items-center gap-2">
+                  <span className="text-base">⚠️</span> The 7-Second Rule
+                </p>
+                <p className="text-[13px] text-zinc-300 font-light leading-relaxed">
+                  Even if the store is cold, the parking lot is a frying pan. If you cannot hold the back of your hand to the asphalt for 7 full seconds, carry your Frenchie inside.
+                </p>
+              </div>
+            </div>
+            
+            <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Category 1 */}
+              <div className="bg-zinc-950 border border-[rgba(255,255,255,0.05)] rounded-2xl p-6">
+                <h3 className="font-heading text-xl text-white mb-3">Hardware & Supplies</h3>
+                <ul className="space-y-2 text-sm text-[var(--dim)] font-light">
+                  <li className="flex items-center gap-2"><span className="text-[#66BB6A]">✔</span> The Home Depot</li>
+                  <li className="flex items-center gap-2"><span className="text-[#66BB6A]">✔</span> Lowe&apos;s Home Improvement</li>
+                  <li className="flex items-center gap-2"><span className="text-[#66BB6A]">✔</span> Tractor Supply Co.</li>
+                  <li className="flex items-center gap-2"><span className="text-[#66BB6A]">✔</span> Ace Hardware (most locations)</li>
+                </ul>
+              </div>
+              
+              {/* Category 2 */}
+              <div className="bg-zinc-950 border border-[rgba(255,255,255,0.05)] rounded-2xl p-6">
+                <h3 className="font-heading text-xl text-white mb-3">Hobbies & Goods</h3>
+                <ul className="space-y-2 text-sm text-[var(--dim)] font-light">
+                  <li className="flex items-center gap-2"><span className="text-[#66BB6A]">✔</span> Half Price Books (Texas Classic!)</li>
+                  <li className="flex items-center gap-2"><span className="text-[#66BB6A]">✔</span> Bass Pro Shops / Cabela&apos;s</li>
+                  <li className="flex items-center gap-2"><span className="text-[#66BB6A]">✔</span> Michaels & JoAnn Fabrics</li>
+                  <li className="flex items-center gap-2"><span className="text-[#66BB6A]">✔</span> REI Co-op</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Affiliate Storefront CTA */}
         <div className="mb-16">
           <Link
