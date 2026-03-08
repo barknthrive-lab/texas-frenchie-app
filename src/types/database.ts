@@ -24,10 +24,23 @@ export interface DirectoryListing {
 
 export interface Article {
   id: string;
-  city: City;
+  created_at: string;
   title: string;
   slug: string;
   content: string; // Markdown or HTML
-  author: string; // E.g., "Texas Frenchie Network"
-  published_at: string;
+  published: boolean;
+  author?: string;
+}
+
+export interface StoreProduct {
+  id: string;
+  created_at: string;
+  title: string;
+  description: string | null;
+  price: string | null;
+  image_url: string | null;
+  affiliate_url: string;
+  category: "Cooling Gear" | "Health & Safety" | "Home & Travel" | "Apparel";
+  is_featured: boolean;
+  retailer: string | null;
 }
