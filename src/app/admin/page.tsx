@@ -9,6 +9,20 @@ type Tab = "research" | "vault" | "auditor";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>("research");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passcode, setPasscode] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcode === "877668") {
+      setIsAuthenticated(true);
+      setErrorMsg("");
+    } else {
+      setErrorMsg("INVALID ACCESS CODE");
+      setPasscode("");
+    }
+  };
 
   // React Query for data-fetching
   const { data: listings, isLoading, isError, error } = useQuery({
@@ -23,6 +37,40 @@ export default function AdminDashboard() {
       return data as DirectoryListing[];
     },
   });
+
+  if (!isAuthenticated) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="bg-[#111] border border-zinc-800 p-8 rounded-2xl w-full max-w-sm text-center shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[rgba(232,80,10,0.1)] rounded-full blur-[50px] pointer-events-none" />
+          <h2 className="font-heading text-2xl tracking-widest text-[#F0E6D3] mb-6 relative z-10">
+            SECURE <span className="text-[#E8500A]">LOGIN</span>
+          </h2>
+          <form onSubmit={handleLogin} className="relative z-10">
+            <input
+              type="password"
+              placeholder="Enter Access Code"
+              value={passcode}
+              onChange={(e) => setPasscode(e.target.value)}
+              className="w-full bg-[#1A1A1A] border border-zinc-700 rounded-lg p-3 text-center text-white tracking-[0.5em] font-mono focus:border-[#E8500A] focus:outline-none mb-4"
+              autoFocus
+            />
+            {errorMsg && (
+              <p className="text-red-500 font-mono text-xs tracking-widest uppercase mb-4 blink">
+                {errorMsg}
+              </p>
+            )}
+            <button
+              type="submit"
+              className="w-full bg-zinc-900 border border-zinc-700 hover:border-[#E8500A] hover:bg-[#E8500A]/10 text-white font-mono text-sm tracking-widest uppercase py-3 rounded-lg transition-colors"
+            >
+              Verify
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
