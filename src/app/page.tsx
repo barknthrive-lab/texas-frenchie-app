@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 
 export default function Home() {
@@ -6,18 +7,31 @@ export default function Home() {
     <div className="page-wrapper pt-16 pb-20">
       <div className="page-inner">
 
-        {/* Hero — centered */}
-        <div className="text-center mb-16">
-          <div className="inline-block font-mono text-[10px] tracking-[5px] uppercase text-[var(--color-tx-burnt)] border border-[rgba(232,80,10,0.4)] px-3.5 py-1.5 rounded-full mb-5">
-            The Texas Network
+        {/* Hero — Full Width Stunning Image Header */}
+        <div className="relative w-full h-[60vh] md:h-[70vh] rounded-3xl overflow-hidden mb-16 shadow-2xl border border-white/5">
+          <Image 
+            src="/hero-frenchie.png"
+            alt="French Bulldog sitting on a sunny Texas patio wearing an orange cooling bandana"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Gradient Overlay so text is readable */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+          
+          {/* Text Content positioned at the bottom of the hero image */}
+          <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 pb-16 flex flex-col items-start justify-end">
+            <div className="inline-block font-mono text-[10px] tracking-[5px] uppercase text-white bg-[var(--color-tx-burnt)] px-4 py-1.5 rounded-full mb-4 shadow-lg">
+              The Texas Network
+            </div>
+            <h1 className="font-heading text-5xl sm:text-7xl md:text-8xl tracking-widest text-white drop-shadow-md">
+              Texas <em className="text-[var(--color-tx-burnt)] not-italic relative z-10">Frenchie</em>
+            </h1>
+            <p className="mt-4 text-[16px] md:text-lg text-zinc-200 font-light max-w-2xl leading-relaxed drop-shadow-sm">
+              The statewide directory for French Bulldog owners. Find verified vets,
+              pet-friendly apartments, and local communities from Austin to Dallas.
+            </p>
           </div>
-          <h1 className="font-heading text-[clamp(58px,10vw,110px)] leading-[0.88] tracking-widest text-[#F0E6D3]">
-            Texas <em className="text-[var(--color-tx-burnt)] not-italic">Frenchie</em>
-          </h1>
-          <p className="mt-5 text-[15px] text-[var(--dim)] font-light max-w-lg mx-auto leading-relaxed">
-            The statewide directory for French Bulldog owners. Find verified vets,
-            pet-friendly apartments, and local communities from Austin to Dallas.
-          </p>
         </div>
 
         {/* City cards grid */}

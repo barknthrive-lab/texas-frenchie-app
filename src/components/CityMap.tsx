@@ -8,34 +8,23 @@ import type { DirectoryListing } from "@/types/database";
 
 // Fix Leaflet's default icon path issues with Next.js/Webpack
 // Fix Leaflet's default icon path issues with Next.js/Webpack
-const customIcon = new L.Icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
+// Create custom HTML markers using Tailwind CSS instead of external images to prevent broken links
+const createCustomIcon = (colorClass: string) => {
+  return L.divIcon({
+    className: "bg-transparent border-none",
+    html: `<div class="w-6 h-6 rounded-full border-2 border-white/50 shadow-[0_0_15px_rgba(0,0,0,0.8)] flex items-center justify-center backdrop-blur-sm ${colorClass}">
+             <div class="w-2 h-2 bg-white rounded-full"></div>
+           </div>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [0, -12],
+  });
+};
 
-const redIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-x2-red.png",
-  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-
-const greenIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-x2-green.png",
-  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-
-const goldIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-x2-gold.png",
-  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
+const redIcon = createCustomIcon("bg-red-500/80");
+const greenIcon = createCustomIcon("bg-green-500/80");
+const goldIcon = createCustomIcon("bg-amber-500/80");
+const customIcon = createCustomIcon("bg-blue-500/80");
 
 function getIconForCategory(category: string) {
   if (category === "Vet" || category === "Trainer") return redIcon;
