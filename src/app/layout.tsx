@@ -3,7 +3,7 @@ import { DM_Sans, DM_Mono, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Footer from "@/components/Footer";
-
+import Link from "next/link";
 import PushNotificationManager from "@/components/PushNotificationManager";
 
 const dmSans = DM_Sans({
@@ -74,6 +74,15 @@ export default function RootLayout({
           {children}
           <Footer />
         </div>
+
+        {/* Secret Admin Portal Access */}
+        <Link 
+          href="/admin" 
+          title="Admin Dashboard"
+          className="fixed bottom-4 left-4 z-50 text-2xl opacity-10 hover:opacity-100 transition-opacity drop-shadow-md cursor-pointer"
+        >
+          🐶
+        </Link>
 
         {/* Meta Pixel Code for Texas Frenchie Network */}
         <Script id="meta-pixel" strategy="afterInteractive">
