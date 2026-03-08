@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import type { City, DirectoryListing } from "@/types/database";
+import LeafletMap from "@/components/DynamicMap";
 
 const VALID_CITIES: City[] = ["Austin", "Dallas", "Houston", "San Antonio"];
 
@@ -145,6 +146,19 @@ export default async function CityHub({
           Your local guide to navigating {cityName} with a French Bulldog.
           Verified vets, dog-friendly patios, top breeders, and essential gear.
         </p>
+      </div>
+
+      <div className="mb-12">
+        <LeafletMap 
+          city={cityName} 
+          listings={[
+            ...(vets || []), 
+            ...(apts || []), 
+            ...(patios || []), 
+            ...(breeders || []), 
+            ...(parks || [])
+          ]} 
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
